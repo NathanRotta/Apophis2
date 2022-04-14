@@ -1,0 +1,10 @@
+//module to take the absolute value
+module absolute#(parameter LEN=32) ();
+    function [0:(LEN-1)]abs(
+        input signed [LEN-1:0]signednum
+		);
+        begin
+            abs = (signednum<0)? (~signednum+1) : signednum;
+        end
+    endfunction
+endmodule

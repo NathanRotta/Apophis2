@@ -1,0 +1,14 @@
+module truncate#(parameter LEN1=32,parameter LEN2=8) ();
+    function [0:(LEN2-1)]keepLSB;
+        input signed [LEN1-1:0]num;
+        begin
+            truncate = num[LEN2-1:0];
+        end
+    endfunction
+	function [0:(LEN2-1)]keepMSB;
+        input signed [0:LEN1-1]num;
+        begin
+            truncate = num[0:LEN2-1];
+        end
+    endfunction
+endmodule

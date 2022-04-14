@@ -1,0 +1,40 @@
+module bin2ascii_seq #(parameter BITS=32, parameter DIGITS=10)(
+	input signed [0:BITS-1]binaryin, //binary bits that need to be turned into ascii
+	input start, //indicate when to start go set high then reset to low to start
+	input clk, //clock for asynchronus logic
+	output reg [0:DIGITS*8+7]ascii, //one more digit for the sign
+	output reg valid,  //is result valid
+	output reg busy
+	);
+	reg [0:BITS-1]divisor;
+	reg [0:$clog2(DIGITS*8)] shift;
+	absolute #(BITS) ab0();
+	wire [0:BITS-1]pbin = ab0.abs(bin);//absolute value of bin
+	truncate #(BITS,8) tr();
+	wire [0:BITS-1]reduced =pbin/divisor;//number rudeced so that the next digit is in the ones place
+	reg signed [0:BITS-1]bin;
+	always @(posedge clk) begin
+        if (start) begin
+            valid <= 0;
+            shift <= 8;
+			busy<=1;
+			divisor <= $pow(10,DIGITS-1);
+			bin <=binaryin;
+			ascii <= (binaryin<0)?"-":" ";
+        end else if (busy) begin
+			if(reduced!=0)//don't write a bunch of needless zeros
+				ascii <= {ascii,tr.keepLSB(reduced%10+48)};
+			divisor <=divisor/10;
+			shift <= shift+8;
+			if(divisor<=1) begin
+				busy<=0;
+				valid <= 1;
+				
+			end
+        end
+    end
+	
+	
+	
+	
+endmodule

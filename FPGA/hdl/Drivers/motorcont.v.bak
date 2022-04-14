@@ -1,0 +1,16 @@
+
+module motor_driver(speed,clock,pins);
+	input signed [17:0]speed; //number from
+	input [16:0]clock;
+	output [2:0]pins;//in1 in2 and ena 
+
+	wire [17:0]absspeed;
+	assign absspeed = (speed>0) ? speed : (~speed)+1;
+	
+	assign pins[2] = (absspeed[16:0]>=clock);
+	assign pins[0] = !speed[17] && (speed!=0);
+	assign pins[1] = speed[17] && (speed!=0);
+
+endmodule
+
+

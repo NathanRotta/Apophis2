@@ -1,0 +1,40 @@
+module apply_force(
+input signed [0:31] f_newtons,
+input [0:19] ctime,
+output [0:2] m_pins,
+input [0:31]period,
+);
+parameter FORCE_LIMIT = 25;
+parameter FRICTION = 10
+parameter PPR = 400;
+parameter MAX_DUTY 32'h0007ffff;
+
+wire [0:31]f_required;
+//if the pendulum is moving in the same direction as F add friction to f_required if oposit subtract
+assign f_required = ((period<0)==(f_newtons<0)) ? (f_newtons+FRICTION) :(f_newtons-FRICTION);
+
+//if force greater than the max, set to max
+wire [0:31]f_using;
+assign f_using = (f_required>FORCE_LIMIT) ? (FORCE_LIMIT):(f_required);
+
+//absolute value of the period
+//wire abs_period = (period>0)? period : (1+~period);
+
+//force if full duty cycle was used 15000/51-((50MHz)/(period*(4*PPR)))/51
+wire signed [0:31]fullf = 29-500000000/(period*PPR*204);
+
+//duty cycle nescisary
+wire signed [0:31]duty_cycle = (f_using*MAX_DUTY)/fullf;
+
+//duty cycle
+motor_driver md0(duty_cycle,ctime,pins);
+
+
+
+
+
+
+
+
+
+endmodule

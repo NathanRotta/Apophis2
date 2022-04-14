@@ -1,0 +1,52 @@
+
+// create module
+module Inverted_Pend(clk,enc,enc2,rxd, LED, DIS,motor,tx);
+
+input rxd; //rx pin for uart
+input clk;     // input clock 50MHz
+input [2:0]enc;  //rotery encoder inputs. 0 is phase A. 1 is phase B. 2 is phase z
+input [2:0]enc2;
+output [2:0]motor; //output to drive the three motor pins in1,in2 and ena
+output LED;
+output tx;//output for uart
+output signed [41:0] DIS;//output to the digital display
+
+// create a binary counter
+reg [50:0] ctime; //51 bit counter
+initial ctime <= 0; // start count at zero 
+always @(posedge clk) ctime <= ctime+1; // count up
+
+//assign LED to nth bit of the counter
+assign LED = ctime[24]; // Use the 25th bit of the counter to blink the LED at a few Hz
+
+wire [23:0]angpos;
+wire [31:0]period;
+encoder4sig enc1(enc,ctime,angpos,period,error);
+
+wire signed [23:0]error;
+wire signed [17:0]mspeed;
+assign mspeed = 100;
+wire [16:0]clock;
+assign clock = ctime[15:0];
+motor_driver md(mspeed,clock,motor);
+
+
+
+//Uart
+reg transmit;
+reg [7:0] tx_byte;
+wire [7:0] rx_byte;
+wire received;
+wire is_receiving;
+wire is_transmitting;
+wire recv_error;
+//wire reset = 0;
+uart uart0 (clk,, rxd, tx, transmit, tx_byte, received, rx_byte,, is_transmitting,);
+
+	initial tx_byte = 50;
+	initial transmit = 1;
+	always @(is_transmitting) transmit=1;
+	bin2dis b2d(is_transmitting,DIS);
+
+
+endmodule 

@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at apply_force.v(13): object "STATIC_FRICTION" differs only in case from object "static_friction" in the same scope File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/apply_force.v Line: 13
+Warning (10268): Verilog HDL information at bin2ascii_seq.v(20): always construct contains both blocking and non-blocking assignments File: C:/Users/natha/Apophis/FPGA/hdl/Uart/bin2ascii_seq.v Line: 20

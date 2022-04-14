@@ -1,0 +1,56 @@
+//this module sends the measurement data over uart
+module send_packet(//measurements
+input [0:15]x_pos,
+//input [0:31]x_vel,
+//input [0:31]x_int,
+//input [0:15]theta1_pos,
+//input [0:31]theta1_vel,
+//input [0:31]theta1_int,
+//input [0:15]theta2_pos,
+//input [0:31]theta2_vel,
+//input [0:31]theta2_int,
+input packaval,//when new packet is available this should have a rising edge
+input clk,
+output tx);
+	parameter P_LEN = 12;//packet length in bytes
+	wire [0:11]d0;
+	bin2ascii asd0(x_pos,d0);
+	
+	
+	
+	wire [0:((P_LEN)*8-1)]datastring = {d0,","};
+	wire light;
+	print_str pr0(clk,datastring,packaval,tx,light);
+	defparam pr0.STR_LEN=P_LEN;
+	
+endmodule 
+
+module bin2ascii
+#(parameter DIGITS=10,
+ parameter BITS=32) ( input signed [0:(BITS-1)]bin,
+output reg [0:(DIGITS*8+7)]bcd);
+	reg [0:BITS]divisor = 10;
+	integer i;
+	wire [0:(BITS-1)] absbin;
+	abs abs0(bin,absbin);
+	always @* begin
+		if(bin<0) begin
+			bcd[(DIGITS*8):(DIGITS*8+7)]="-";//if negative put sign in front
+		end
+		else bcd[(DIGITS*8):(DIGITS*8+7)]=" ";//if positive put space in front
+		for(i=0;i<DIGITS;i=i+1) begin
+			bcd=bcd+(((absbin/divisor)%10)<<(i*8));
+			divisor = divisor*10;
+		end
+	end
+	
+	
+endmodule 
+
+//module to take the absolute value
+function [0:(LEN-1)]abs #(parameter LEN= 32)(input signed [0:(LEN-1)]signednum,output [0:(LEN-1)]posnum);
+	 abs = (signednum<0)? (~signednum+1) : signednum;
+endmodule 
+
+
+

@@ -1,0 +1,49 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LED",
+					"strict" : false
+				},
+				{
+					"name" : "motor[2]",
+					"strict" : false
+				},
+				{
+					"name" : "tx",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "enc1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "encx[0]",
+					"strict" : false
+				},
+				{
+					"name" : "enc1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "encx[1]",
+					"strict" : false
+				},
+				{
+					"name" : "enc2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "enc2[1]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

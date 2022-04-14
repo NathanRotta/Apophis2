@@ -1,0 +1,964 @@
+Analysis & Synthesis report for apophis
+Thu Apr 14 12:35:17 2022
+Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_state
+  9. State Machine - |apophis|send_packet:pack|print_str:str_writer|uart:uart0|recv_state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: encoder4sig:encoder1
+ 16. Parameter Settings for User Entity Instance: encoder4sig:encoder2
+ 17. Parameter Settings for User Entity Instance: encoder4sig:encoderx
+ 18. Parameter Settings for User Entity Instance: apply_speed:af
+ 19. Parameter Settings for User Entity Instance: send_packet:pack
+ 20. Parameter Settings for User Entity Instance: send_packet:pack|print_str:str_writer
+ 21. Parameter Settings for User Entity Instance: send_packet:pack|print_str:str_writer|uart:uart0
+ 22. Port Connectivity Checks: "bin2dis:b2d"
+ 23. Port Connectivity Checks: "send_packet:pack|print_str:str_writer|uart:uart0"
+ 24. Port Connectivity Checks: "send_packet:pack|print_str:str_writer"
+ 25. Port Connectivity Checks: "send_packet:pack"
+ 26. Port Connectivity Checks: "apply_speed:af|motor_driver:md0"
+ 27. Port Connectivity Checks: "apply_speed:af"
+ 28. Port Connectivity Checks: "encoder4sig:encoderx"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+ 32. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Apr 14 12:35:17 2022       ;
+; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
+; Revision Name                      ; apophis                                     ;
+; Top-level Entity Name              ; apophis                                     ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 2,207                                       ;
+;     Total combinational functions  ; 1,703                                       ;
+;     Dedicated logic registers      ; 1,306                                       ;
+; Total registers                    ; 1306                                        ;
+; Total pins                         ; 67                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C6GES   ;                    ;
+; Top-level entity name                                            ; apophis            ; apophis            ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; ../hdl/Drivers/apply_speed.v     ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Drivers/apply_speed.v ;         ;
+; ../hdl/Drivers/motorcont.v       ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Drivers/motorcont.v   ;         ;
+; ../hdl/Drivers/Encoder.v         ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Drivers/Encoder.v     ;         ;
+; ../hdl/Drivers/Display.v         ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Drivers/Display.v     ;         ;
+; ../hdl/Uart/uart.v               ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v           ;         ;
+; ../hdl/Uart/send_packet.v        ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Uart/send_packet.v    ;         ;
+; ../hdl/Uart/printfun.v           ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/Uart/printfun.v       ;         ;
+; ../hdl/apophis.v                 ; yes             ; User Verilog HDL File  ; C:/Users/natha/Apophis/FPGA/hdl/apophis.v             ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimated Total logic elements              ; 2,207    ;
+;                                             ;          ;
+; Total combinational functions               ; 1703     ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 401      ;
+;     -- 3 input functions                    ; 926      ;
+;     -- <=2 input functions                  ; 376      ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 708      ;
+;     -- arithmetic mode                      ; 995      ;
+;                                             ;          ;
+; Total registers                             ; 1306     ;
+;     -- Dedicated logic registers            ; 1306     ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 67       ;
+;                                             ;          ;
+; Embedded Multiplier 9-bit elements          ; 0        ;
+;                                             ;          ;
+; Maximum fan-out node                        ; transmit ;
+; Maximum fan-out                             ; 288      ;
+; Total fan-out                               ; 7837     ;
+; Average fan-out                             ; 2.49     ;
++---------------------------------------------+----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                         ;
++------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                       ; Entity Name  ; Library Name ;
++------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------+--------------+--------------+
+; |apophis                     ; 1703 (55)           ; 1306 (52)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 67   ; 0            ; 0          ; |apophis                                                  ; apophis      ; work         ;
+;    |apply_speed:af|          ; 6 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|apply_speed:af                                   ; apply_speed  ; work         ;
+;       |motor_driver:md0|     ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|apply_speed:af|motor_driver:md0                  ; motor_driver ; work         ;
+;    |encoder4sig:encoder1|    ; 411 (411)           ; 308 (308)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|encoder4sig:encoder1                             ; encoder4sig  ; work         ;
+;    |encoder4sig:encoder2|    ; 409 (409)           ; 308 (308)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|encoder4sig:encoder2                             ; encoder4sig  ; work         ;
+;    |encoder4sig:encoderx|    ; 409 (409)           ; 308 (308)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|encoder4sig:encoderx                             ; encoder4sig  ; work         ;
+;    |send_packet:pack|        ; 413 (32)            ; 330 (32)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|send_packet:pack                                 ; send_packet  ; work         ;
+;       |print_str:str_writer| ; 381 (181)           ; 298 (265)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|send_packet:pack|print_str:str_writer            ; print_str    ; work         ;
+;          |uart:uart0|        ; 200 (200)           ; 33 (33)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0 ; uart         ; work         ;
++------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------+
+; State Machine - |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_state             ;
++---------------------------+------------------+---------------------------+---------------------+
+; Name                      ; tx_state.TX_IDLE ; tx_state.TX_DELAY_RESTART ; tx_state.TX_SENDING ;
++---------------------------+------------------+---------------------------+---------------------+
+; tx_state.TX_IDLE          ; 0                ; 0                         ; 0                   ;
+; tx_state.TX_SENDING       ; 1                ; 0                         ; 1                   ;
+; tx_state.TX_DELAY_RESTART ; 1                ; 1                         ; 0                   ;
++---------------------------+------------------+---------------------------+---------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |apophis|send_packet:pack|print_str:str_writer|uart:uart0|recv_state                                                                                                                           ;
++-----------------------------+------------------------+---------------------+-----------------------------+--------------------------+-------------------------+---------------------------+--------------------+
+; Name                        ; recv_state.RX_RECEIVED ; recv_state.RX_ERROR ; recv_state.RX_DELAY_RESTART ; recv_state.RX_CHECK_STOP ; recv_state.RX_READ_BITS ; recv_state.RX_CHECK_START ; recv_state.RX_IDLE ;
++-----------------------------+------------------------+---------------------+-----------------------------+--------------------------+-------------------------+---------------------------+--------------------+
+; recv_state.RX_IDLE          ; 0                      ; 0                   ; 0                           ; 0                        ; 0                       ; 0                         ; 0                  ;
+; recv_state.RX_CHECK_START   ; 0                      ; 0                   ; 0                           ; 0                        ; 0                       ; 1                         ; 1                  ;
+; recv_state.RX_READ_BITS     ; 0                      ; 0                   ; 0                           ; 0                        ; 1                       ; 0                         ; 1                  ;
+; recv_state.RX_CHECK_STOP    ; 0                      ; 0                   ; 0                           ; 1                        ; 0                       ; 0                         ; 1                  ;
+; recv_state.RX_DELAY_RESTART ; 0                      ; 0                   ; 1                           ; 0                        ; 0                       ; 0                         ; 1                  ;
+; recv_state.RX_ERROR         ; 0                      ; 1                   ; 0                           ; 0                        ; 0                       ; 0                         ; 1                  ;
+; recv_state.RX_RECEIVED      ; 1                      ; 0                   ; 0                           ; 0                        ; 0                       ; 0                         ; 1                  ;
++-----------------------------+------------------------+---------------------+-----------------------------+--------------------------+-------------------------+---------------------------+--------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                         ;
++------------------------------------------------------------------------------+---------------------------------------------+
+; Register name                                                                ; Reason for Removal                          ;
++------------------------------------------------------------------------------+---------------------------------------------+
+; send_packet:pack|print_str:str_writer|transtr[364..367]                      ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[360..363]                      ; Stuck at VCC due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[356..359]                      ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[352..355]                      ; Stuck at VCC due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[224..255,320..351]             ; Stuck at GND due to stuck port data_in      ;
+; encoder4sig:encoderx|tAR_prev[50]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[50]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[49]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[49]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[48]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[48]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[47]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[47]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[46]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[46]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[45]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[45]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[44]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[44]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[43]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[43]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[42]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[42]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[41]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[41]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[40]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[40]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[39]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[39]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[38]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[38]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[37]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[37]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[36]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[36]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[35]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[35]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[34]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[34]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[33]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[33]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR_prev[32]                                            ; Lost fanout                                 ;
+; encoder4sig:encoderx|tAR[32]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[50]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[50]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[49]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[49]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[48]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[48]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[47]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[47]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[46]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[46]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[45]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[45]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[44]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[44]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[43]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[43]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[42]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[42]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[41]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[41]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[40]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[40]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[39]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[39]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[38]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[38]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[37]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[37]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[36]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[36]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[35]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[35]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[34]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[34]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[33]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[33]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR_prev[32]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder2|tAR[32]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[50]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[50]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[49]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[49]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[48]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[48]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[47]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[47]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[46]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[46]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[45]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[45]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[44]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[44]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[43]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[43]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[42]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[42]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[41]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[41]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[40]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[40]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[39]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[39]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[38]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[38]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[37]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[37]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[36]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[36]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[35]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[35]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[34]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[34]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[33]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[33]                                                 ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR_prev[32]                                            ; Lost fanout                                 ;
+; encoder4sig:encoder1|tAR[32]                                                 ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|transtr[156,158,159]                   ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[153..155,157]                  ; Stuck at VCC due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[148..152]                      ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[144..147]                      ; Stuck at VCC due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[143]                           ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[142]                           ; Stuck at VCC due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[128..141]                      ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|transtr[31]                            ; Merged with send_packet:pack|packet_num[31] ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state~6                ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state~7                ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state~8                ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_RECEIVED      ; Stuck at GND due to stuck port data_in      ;
+; send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[0..5]          ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[0..10]       ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|rx_bits_remaining[0..3]     ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_IDLE          ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_CHECK_START   ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_READ_BITS     ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_CHECK_STOP    ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_DELAY_RESTART ; Lost fanout                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_ERROR         ; Lost fanout                                 ;
+; Total Number of Removed Registers = 258                                      ;                                             ;
++------------------------------------------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                        ;
++-------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------+
+; Register name                                                           ; Reason for Removal        ; Registers Removed due to This Register                                       ;
++-------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------+
+; send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[0]        ; Lost Fanouts              ; send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[1],            ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[2],            ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[4],            ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[5],            ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[0],          ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[1],          ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[2],          ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[3]           ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state~6           ; Lost Fanouts              ; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_IDLE,         ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_CHECK_START,  ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_READ_BITS     ;
+; send_packet:pack|print_str:str_writer|uart:uart0|rx_bits_remaining[1]   ; Lost Fanouts              ; send_packet:pack|print_str:str_writer|uart:uart0|rx_bits_remaining[2],       ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|rx_bits_remaining[3]        ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state~8           ; Lost Fanouts              ; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_CHECK_STOP,   ;
+;                                                                         ;                           ; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_ERROR         ;
+; encoder4sig:encoderx|tAR_prev[46]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[46]                                                 ;
+; encoder4sig:encoderx|tAR_prev[45]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[45]                                                 ;
+; encoder4sig:encoderx|tAR_prev[44]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[44]                                                 ;
+; encoder4sig:encoderx|tAR_prev[43]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[43]                                                 ;
+; encoder4sig:encoderx|tAR_prev[42]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[42]                                                 ;
+; encoder4sig:encoderx|tAR_prev[41]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[41]                                                 ;
+; encoder4sig:encoderx|tAR_prev[40]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[40]                                                 ;
+; encoder4sig:encoderx|tAR_prev[39]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[39]                                                 ;
+; encoder4sig:encoderx|tAR_prev[38]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[38]                                                 ;
+; encoder4sig:encoderx|tAR_prev[37]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[37]                                                 ;
+; encoder4sig:encoderx|tAR_prev[36]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[36]                                                 ;
+; encoder4sig:encoderx|tAR_prev[35]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[35]                                                 ;
+; encoder4sig:encoderx|tAR_prev[34]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[34]                                                 ;
+; encoder4sig:encoderx|tAR_prev[33]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[33]                                                 ;
+; encoder4sig:encoderx|tAR_prev[32]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[32]                                                 ;
+; encoder4sig:encoder2|tAR_prev[50]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[50]                                                 ;
+; encoder4sig:encoder2|tAR_prev[49]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[49]                                                 ;
+; encoder4sig:encoder2|tAR_prev[48]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[48]                                                 ;
+; encoder4sig:encoder2|tAR_prev[47]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[47]                                                 ;
+; encoder4sig:encoder2|tAR_prev[46]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[46]                                                 ;
+; encoder4sig:encoder2|tAR_prev[45]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[45]                                                 ;
+; encoder4sig:encoder2|tAR_prev[44]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[44]                                                 ;
+; encoder4sig:encoder2|tAR_prev[43]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[43]                                                 ;
+; encoder4sig:encoder2|tAR_prev[42]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[42]                                                 ;
+; encoder4sig:encoder2|tAR_prev[41]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[41]                                                 ;
+; encoder4sig:encoder2|tAR_prev[40]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[40]                                                 ;
+; encoder4sig:encoder2|tAR_prev[39]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[39]                                                 ;
+; encoder4sig:encoder2|tAR_prev[38]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[38]                                                 ;
+; encoder4sig:encoder2|tAR_prev[37]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[37]                                                 ;
+; encoder4sig:encoder2|tAR_prev[36]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[36]                                                 ;
+; encoder4sig:encoder2|tAR_prev[35]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[35]                                                 ;
+; encoder4sig:encoder2|tAR_prev[34]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[34]                                                 ;
+; encoder4sig:encoder2|tAR_prev[33]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[33]                                                 ;
+; encoder4sig:encoder2|tAR_prev[32]                                       ; Lost Fanouts              ; encoder4sig:encoder2|tAR[32]                                                 ;
+; encoder4sig:encoder1|tAR_prev[50]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[50]                                                 ;
+; encoder4sig:encoder1|tAR_prev[49]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[49]                                                 ;
+; encoder4sig:encoder1|tAR_prev[48]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[48]                                                 ;
+; encoder4sig:encoder1|tAR_prev[47]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[47]                                                 ;
+; encoder4sig:encoder1|tAR_prev[46]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[46]                                                 ;
+; encoder4sig:encoder1|tAR_prev[45]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[45]                                                 ;
+; encoder4sig:encoder1|tAR_prev[44]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[44]                                                 ;
+; encoder4sig:encoder1|tAR_prev[43]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[43]                                                 ;
+; encoder4sig:encoder1|tAR_prev[42]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[42]                                                 ;
+; encoder4sig:encoderx|tAR_prev[50]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[50]                                                 ;
+; encoder4sig:encoder1|tAR_prev[40]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[40]                                                 ;
+; encoder4sig:encoder1|tAR_prev[39]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[39]                                                 ;
+; encoder4sig:encoder1|tAR_prev[38]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[38]                                                 ;
+; encoder4sig:encoder1|tAR_prev[37]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[37]                                                 ;
+; encoder4sig:encoder1|tAR_prev[36]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[36]                                                 ;
+; encoder4sig:encoder1|tAR_prev[35]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[35]                                                 ;
+; encoder4sig:encoder1|tAR_prev[41]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[41]                                                 ;
+; encoder4sig:encoder1|tAR_prev[33]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[33]                                                 ;
+; encoder4sig:encoder1|tAR_prev[32]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[32]                                                 ;
+; encoder4sig:encoderx|tAR_prev[49]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[49]                                                 ;
+; encoder4sig:encoderx|tAR_prev[48]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[48]                                                 ;
+; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_RECEIVED ; Stuck at GND              ; send_packet:pack|print_str:str_writer|uart:uart0|recv_state.RX_DELAY_RESTART ;
+;                                                                         ; due to stuck port data_in ;                                                                              ;
+; encoder4sig:encoderx|tAR_prev[47]                                       ; Lost Fanouts              ; encoder4sig:encoderx|tAR[47]                                                 ;
+; encoder4sig:encoder1|tAR_prev[34]                                       ; Lost Fanouts              ; encoder4sig:encoder1|tAR[34]                                                 ;
++-------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1306  ;
+; Number of registers using Synchronous Clear  ; 8     ;
+; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                 ;
++--------------------------------------------------------------------+---------+
+; Inverted Register                                                  ; Fan out ;
++--------------------------------------------------------------------+---------+
+; send_packet:pack|print_str:str_writer|uart:uart0|tx_out            ; 2       ;
+; send_packet:pack|print_str:str_writer|uart:uart0|tx_clk_divider[6] ; 1       ;
+; send_packet:pack|print_str:str_writer|uart:uart0|tx_clk_divider[5] ; 1       ;
+; send_packet:pack|print_str:str_writer|uart:uart0|tx_clk_divider[3] ; 1       ;
+; send_packet:pack|print_str:str_writer|uart:uart0|tx_clk_divider[2] ; 1       ;
+; Total number of inverted registers = 5                             ;         ;
++--------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_clk_divider[10]   ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[4]    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_bits_remaining[1] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_countdown[4]      ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_countdown[3]      ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|rx_bits_remaining[0] ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|rx_countdown[3]      ;
+; 45:1               ; 3 bits    ; 90 LEs        ; 75 LEs               ; 15 LEs                 ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_data[6]           ;
+; 45:1               ; 2 bits    ; 60 LEs        ; 48 LEs               ; 12 LEs                 ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_data[0]           ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|tx_clk_divider[3]    ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|rx_clk_divider[6]    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|Selector7            ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |apophis|send_packet:pack|print_str:str_writer|uart:uart0|Selector6            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: encoder4sig:encoder1 ;
++----------------+----------+---------------------------------------+
+; Parameter Name ; Value    ; Type                                  ;
++----------------+----------+---------------------------------------+
+; MAX_PERIOD     ; 20000000 ; Signed Integer                        ;
++----------------+----------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: encoder4sig:encoder2 ;
++----------------+----------+---------------------------------------+
+; Parameter Name ; Value    ; Type                                  ;
++----------------+----------+---------------------------------------+
+; MAX_PERIOD     ; 20000000 ; Signed Integer                        ;
++----------------+----------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: encoder4sig:encoderx ;
++----------------+----------+---------------------------------------+
+; Parameter Name ; Value    ; Type                                  ;
++----------------+----------+---------------------------------------+
+; MAX_PERIOD     ; 20000000 ; Signed Integer                        ;
++----------------+----------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: apply_speed:af         ;
++----------------+----------------------------------+-----------------+
+; Parameter Name ; Value                            ; Type            ;
++----------------+----------------------------------+-----------------+
+; SLOPE          ; 108                              ; Signed Integer  ;
+; INTERCEPT      ; 84628                            ; Signed Integer  ;
+; D_MAX          ; 300000                           ; Signed Integer  ;
+; PERIOD_MAX     ; 01111111111111111111111111111111 ; Unsigned Binary ;
++----------------+----------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: send_packet:pack ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; TOTAL_LENGTH   ; 368   ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: send_packet:pack|print_str:str_writer ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; STR_LEN        ; 46    ; Signed Integer                                            ;
+; BEGIN          ; 0     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: send_packet:pack|print_str:str_writer|uart:uart0 ;
++------------------+-------+--------------------------------------------------------------------+
+; Parameter Name   ; Value ; Type                                                               ;
++------------------+-------+--------------------------------------------------------------------+
+; CLOCK_DIVIDE     ; 108   ; Signed Integer                                                     ;
+; RX_IDLE          ; 0     ; Signed Integer                                                     ;
+; RX_CHECK_START   ; 1     ; Signed Integer                                                     ;
+; RX_READ_BITS     ; 2     ; Signed Integer                                                     ;
+; RX_CHECK_STOP    ; 3     ; Signed Integer                                                     ;
+; RX_DELAY_RESTART ; 4     ; Signed Integer                                                     ;
+; RX_ERROR         ; 5     ; Signed Integer                                                     ;
+; RX_RECEIVED      ; 6     ; Signed Integer                                                     ;
+; TX_IDLE          ; 0     ; Signed Integer                                                     ;
+; TX_SENDING       ; 1     ; Signed Integer                                                     ;
+; TX_DELAY_RESTART ; 2     ; Signed Integer                                                     ;
++------------------+-------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "bin2dis:b2d"                                                                                                                                                                      ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; bin  ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (24 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "send_packet:pack|print_str:str_writer|uart:uart0"                                                                ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                  ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; rst          ; Input  ; Info     ; Explicitly unconnected                                                                                   ;
+; rx           ; Input  ; Info     ; Explicitly unconnected                                                                                   ;
+; received     ; Output ; Info     ; Explicitly unconnected                                                                                   ;
+; rx_byte      ; Output ; Info     ; Explicitly unconnected                                                                                   ;
+; is_receiving ; Output ; Info     ; Explicitly unconnected                                                                                   ;
+; recv_error   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "send_packet:pack|print_str:str_writer" ;
++-------------------+-------+----------+----------------------------+
+; Port              ; Type  ; Severity ; Details                    ;
++-------------------+-------+----------+----------------------------+
+; message[352..355] ; Input ; Info     ; Stuck at VCC               ;
+; message[360..363] ; Input ; Info     ; Stuck at VCC               ;
+; message[356..359] ; Input ; Info     ; Stuck at GND               ;
+; message[364..367] ; Input ; Info     ; Stuck at GND               ;
++-------------------+-------+----------+----------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "send_packet:pack" ;
++------------+-------+----------+--------------+
+; Port       ; Type  ; Severity ; Details      ;
++------------+-------+----------+--------------+
+; theta1_int ; Input ; Info     ; Stuck at GND ;
+; theta2_int ; Input ; Info     ; Stuck at GND ;
++------------+-------+----------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "apply_speed:af|motor_driver:md0"                                                                                                                                                    ;
++-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                             ;
++-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; speed ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (20 bits) it drives.  The 12 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; clock ; Input ; Warning  ; Input port expression (20 bits) is wider than the input port (19 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts.  ;
++-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "apply_speed:af"                                                                                                                                                                                    ;
++----------------------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port                 ; Type  ; Severity ; Details                                                                                                                                                                             ;
++----------------------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; speed_400rpm[22..26] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; speed_400rpm[0..21]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; speed_400rpm[29..31] ; Input ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; speed_400rpm[27]     ; Input ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; speed_400rpm[28]     ; Input ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; ctime                ; Input ; Warning  ; Input port expression (51 bits) is wider than the input port (20 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++----------------------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "encoder4sig:encoderx" ;
++---------+-------+----------+---------------------+
+; Port    ; Type  ; Severity ; Details             ;
++---------+-------+----------+---------------------+
+; pins[2] ; Input ; Info     ; Stuck at GND        ;
++---------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 67                          ;
+; cycloneiii_ff         ; 1306                        ;
+;     ENA               ; 4                           ;
+;     ENA SCLR          ; 8                           ;
+;     ENA SLD           ; 4                           ;
+;     plain             ; 1290                        ;
+; cycloneiii_lcell_comb ; 1707                        ;
+;     arith             ; 995                         ;
+;         2 data inputs ; 106                         ;
+;         3 data inputs ; 889                         ;
+;     normal            ; 712                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 259                         ;
+;         3 data inputs ; 37                          ;
+;         4 data inputs ; 401                         ;
+;                       ;                             ;
+; Max LUT depth         ; 10.60                       ;
+; Average LUT depth     ; 4.70                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+    Info: Processing started: Thu Apr 14 12:35:07 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off apophis -c apophis
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/drivers/apply_speed.v
+    Info (12023): Found entity 1: apply_speed File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/apply_speed.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/drivers/apply_force.v
+    Info (12023): Found entity 1: apply_force File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/apply_force.v Line: 1
+Warning (10229): Verilog HDL Expression warning at bin2ascii_seq.v(25): truncated literal to match 64 bits File: C:/Users/natha/Apophis/FPGA/hdl/Uart/bin2ascii_seq.v Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/uart/bin2ascii_seq.v
+    Info (12023): Found entity 1: bin2ascii_seq File: C:/Users/natha/Apophis/FPGA/hdl/Uart/bin2ascii_seq.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/math/absolute.v
+    Info (12023): Found entity 1: absolute File: C:/Users/natha/Apophis/FPGA/hdl/Math/absolute.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/drivers/motorcont.v
+    Info (12023): Found entity 1: motor_driver File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/motorcont.v Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file /users/natha/apophis/fpga/hdl/drivers/encoder.v
+    Info (12023): Found entity 1: encoder File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Encoder.v Line: 4
+    Info (12023): Found entity 2: encoder4sig File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Encoder.v Line: 27
+Info (12021): Found 2 design units, including 2 entities, in source file /users/natha/apophis/fpga/hdl/drivers/display.v
+    Info (12023): Found entity 1: bin2dis File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Display.v Line: 3
+    Info (12023): Found entity 2: dis_char File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Display.v Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/math/divide.v
+    Info (12023): Found entity 1: div_int File: C:/Users/natha/Apophis/FPGA/hdl/Math/divide.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/uart/uart.v
+    Info (12023): Found entity 1: uart File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/uart/send_packet.v
+    Info (12023): Found entity 1: send_packet File: C:/Users/natha/Apophis/FPGA/hdl/Uart/send_packet.v Line: 6
+Warning (10275): Verilog HDL Module Instantiation warning at printfun.v(97): ignored dangling comma in List of Port Connections File: C:/Users/natha/Apophis/FPGA/hdl/Uart/printfun.v Line: 97
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/uart/printfun.v
+    Info (12023): Found entity 1: print_str File: C:/Users/natha/Apophis/FPGA/hdl/Uart/printfun.v Line: 77
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/apophis/fpga/hdl/apophis.v
+    Info (12023): Found entity 1: apophis File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 3
+Info (12127): Elaborating entity "apophis" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at apophis.v(38): object "mspeed" assigned a value but never read File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 38
+Warning (10230): Verilog HDL assignment warning at apophis.v(40): truncated value with size 32 to match size of target (20) File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 40
+Info (12128): Elaborating entity "encoder4sig" for hierarchy "encoder4sig:encoder1" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 25
+Warning (10036): Verilog HDL or VHDL warning at Encoder.v(48): object "tBR" assigned a value but never read File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Encoder.v Line: 48
+Warning (10036): Verilog HDL or VHDL warning at Encoder.v(49): object "tBF" assigned a value but never read File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Encoder.v Line: 49
+Warning (10230): Verilog HDL assignment warning at Encoder.v(162): truncated value with size 51 to match size of target (32) File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Encoder.v Line: 162
+Info (12128): Elaborating entity "apply_speed" for hierarchy "apply_speed:af" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 43
+Info (12128): Elaborating entity "motor_driver" for hierarchy "apply_speed:af|motor_driver:md0" File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/apply_speed.v Line: 21
+Warning (10230): Verilog HDL assignment warning at motorcont.v(8): truncated value with size 32 to match size of target (20) File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/motorcont.v Line: 8
+Info (12128): Elaborating entity "send_packet" for hierarchy "send_packet:pack" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 75
+Info (12128): Elaborating entity "print_str" for hierarchy "send_packet:pack|print_str:str_writer" File: C:/Users/natha/Apophis/FPGA/hdl/Uart/send_packet.v Line: 44
+Warning (10230): Verilog HDL assignment warning at printfun.v(99): truncated value with size 368 to match size of target (8) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/printfun.v Line: 99
+Warning (10230): Verilog HDL assignment warning at printfun.v(119): truncated value with size 32 to match size of target (8) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/printfun.v Line: 119
+Info (12128): Elaborating entity "uart" for hierarchy "send_packet:pack|print_str:str_writer|uart:uart0" File: C:/Users/natha/Apophis/FPGA/hdl/Uart/printfun.v Line: 97
+Warning (10230): Verilog HDL assignment warning at uart.v(56): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 56
+Warning (10230): Verilog HDL assignment warning at uart.v(57): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 57
+Warning (10230): Verilog HDL assignment warning at uart.v(89): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 89
+Warning (10230): Verilog HDL assignment warning at uart.v(91): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 91
+Warning (10230): Verilog HDL assignment warning at uart.v(92): truncated value with size 32 to match size of target (6) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 92
+Warning (10230): Verilog HDL assignment warning at uart.v(94): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 94
+Warning (10230): Verilog HDL assignment warning at uart.v(96): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 96
+Warning (10230): Verilog HDL assignment warning at uart.v(97): truncated value with size 32 to match size of target (6) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 97
+Warning (10230): Verilog HDL assignment warning at uart.v(108): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 108
+Warning (10230): Verilog HDL assignment warning at uart.v(137): truncated value with size 32 to match size of target (4) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 137
+Warning (10230): Verilog HDL assignment warning at uart.v(181): truncated value with size 32 to match size of target (11) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 181
+Warning (10230): Verilog HDL assignment warning at uart.v(191): truncated value with size 32 to match size of target (4) File: C:/Users/natha/Apophis/FPGA/hdl/Uart/uart.v Line: 191
+Info (12128): Elaborating entity "bin2dis" for hierarchy "bin2dis:b2d" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 81
+Info (12128): Elaborating entity "dis_char" for hierarchy "bin2dis:b2d|dis_char:ch1" File: C:/Users/natha/Apophis/FPGA/hdl/Drivers/Display.v Line: 6
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "DIS[0]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[1]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[2]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[3]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[4]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[5]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[6]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[7]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[8]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[9]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[10]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[11]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[12]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[13]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[14]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[15]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[16]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[17]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[18]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[19]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[20]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[21]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[22]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[23]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[24]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[25]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[26]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[27]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[28]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[29]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[30]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[31]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[32]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[33]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[34]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[35]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[36]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[37]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[38]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[39]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[40]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "DIS[41]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 13
+    Warning (13410): Pin "motor[0]" is stuck at VCC File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 10
+    Warning (13410): Pin "motor[1]" is stuck at GND File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 10
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 144 registers lost all their fanouts during netlist optimizations.
+Warning (20013): Ignored 24 assignments for entity "DE10_LITE_Golden_Top" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity DE10_LITE_Golden_Top -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity DE10_LITE_Golden_Top -section_id Top was ignored
+Warning (20013): Ignored 24 assignments for entity "Inverted_Pend" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity Inverted_Pend -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity Inverted_Pend -section_id Top was ignored
+Info (144001): Generated suppressed messages file C:/Users/natha/Apophis/FPGA/synthesis/output_files/apophis.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 13 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "enc1[2]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 7
+    Warning (15610): No output dependent on input pin "enc2[2]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 8
+    Warning (15610): No output dependent on input pin "rxd" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/natha/Apophis/FPGA/hdl/apophis.v Line: 4
+Info (21057): Implemented 2274 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 20 input pins
+    Info (21059): Implemented 47 output pins
+    Info (21061): Implemented 2207 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 133 warnings
+    Info: Peak virtual memory: 4812 megabytes
+    Info: Processing ended: Thu Apr 14 12:35:17 2022
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:20
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/natha/Apophis/FPGA/synthesis/output_files/apophis.map.smsg.
+
+

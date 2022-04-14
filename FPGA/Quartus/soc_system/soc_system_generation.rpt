@@ -1,0 +1,263 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate D:\myfiles\Code\Apophis\FPGA\Quartus\soc_system.qsys --synthesis=VERILOG --output-directory=D:\myfiles\Code\Apophis\FPGA\Quartus\soc_system\synthesis --family="Cyclone V" --part=5CSXFC6D6F31C6
+Progress: Loading Quartus/soc_system.qsys
+Progress: Reading input file
+Progress: Adding ILC [interrupt_latency_counter 20.1]
+Progress: Parameterizing module ILC
+Progress: Adding TERASIC_ALSA [TERASIC_ALSA 1.0]
+Progress: Parameterizing module TERASIC_ALSA
+Progress: Adding clk_50 [clock_source 20.1]
+Progress: Parameterizing module clk_50
+Progress: Adding hps_0 [altera_hps 20.1]
+Progress: Parameterizing module hps_0
+Progress: Adding ir_rx [TERASIC_IR_RX_FIFO 1.0]
+Progress: Parameterizing module ir_rx
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 20.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding key [altera_avalon_pio 20.1]
+Progress: Parameterizing module key
+Progress: Adding ledr [altera_avalon_pio 20.1]
+Progress: Parameterizing module ledr
+Progress: Adding mm_bridge_0 [altera_avalon_mm_bridge 20.1]
+Progress: Parameterizing module mm_bridge_0
+Progress: Adding nios2_gen2 [altera_nios2_gen2 20.1]
+Progress: Parameterizing module nios2_gen2
+Progress: Adding onchip_memory2 [altera_avalon_onchip_memory2 20.1]
+Progress: Parameterizing module onchip_memory2
+Progress: Adding seg7 [TERASIC_SEG7 1.0]
+Progress: Parameterizing module seg7
+Progress: Adding spi [altera_avalon_spi 20.1]
+Progress: Parameterizing module spi
+Progress: Adding sw [altera_avalon_pio 20.1]
+Progress: Parameterizing module sw
+Progress: Adding sysid_qsys [altera_avalon_sysid_qsys 20.1]
+Progress: Parameterizing module sysid_qsys
+Progress: Adding timer [altera_avalon_timer 20.1]
+Progress: Parameterizing module timer
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: soc_system.hps_0: HPS Main PLL counter settings: n = 0  m = 73
+Info: soc_system.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: soc_system.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: soc_system.hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
+Warning: soc_system.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: soc_system.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: soc_system.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: soc_system.sw: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: soc_system.sysid_qsys: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: soc_system.sysid_qsys: Time stamp will be automatically updated when this component is generated.
+Warning: soc_system.ir_rx: Interrupt sender ir_rx.interrupt_sender is not connected to an interrupt receiver
+Warning: soc_system.hps_0: hps_0.f2h_sdram0_data must be connected to an Avalon-MM master
+Info: soc_system: Generating soc_system "soc_system" for QUARTUS_SYNTH
+Info: Interconnect is inserted between master hps_0.h2f_lw_axi_master and slave mm_bridge_0.s0 because the master is of type axi and the slave is of type avalon.
+Warning: hps_0.f2h_irq0: Cannot connect clock for irq_mapper.sender
+Warning: hps_0.f2h_irq0: Cannot connect reset for irq_mapper.sender
+Warning: hps_0.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
+Warning: hps_0.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+Info: TERASIC_ALSA: "soc_system" instantiated TERASIC_ALSA "TERASIC_ALSA"
+Info: hps_0: "Running  for module: hps_0"
+Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
+Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
+Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: hps_0: "soc_system" instantiated altera_hps "hps_0"
+Info: ir_rx: "soc_system" instantiated TERASIC_IR_RX_FIFO "ir_rx"
+Info: jtag_uart: Starting RTL generation for module 'soc_system_jtag_uart'
+Info: jtag_uart:   Generation command is [exec D:/quartus/quartus/bin64/perl/bin/perl.exe -I D:/quartus/quartus/bin64/perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=soc_system_jtag_uart --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0004_jtag_uart_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0004_jtag_uart_gen//soc_system_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'soc_system_jtag_uart'
+Info: jtag_uart: "soc_system" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: key: Starting RTL generation for module 'soc_system_key'
+Info: key:   Generation command is [exec D:/quartus/quartus/bin64/perl/bin/perl.exe -I D:/quartus/quartus/bin64/perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_key --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0005_key_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0005_key_gen//soc_system_key_component_configuration.pl  --do_build_sim=0  ]
+Info: key: Done RTL generation for module 'soc_system_key'
+Info: key: "soc_system" instantiated altera_avalon_pio "key"
+Info: ledr: Starting RTL generation for module 'soc_system_ledr'
+Info: ledr:   Generation command is [exec D:/quartus/quartus/bin64/perl/bin/perl.exe -I D:/quartus/quartus/bin64/perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_ledr --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0006_ledr_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0006_ledr_gen//soc_system_ledr_component_configuration.pl  --do_build_sim=0  ]
+Info: ledr: Done RTL generation for module 'soc_system_ledr'
+Info: ledr: "soc_system" instantiated altera_avalon_pio "ledr"
+Info: mm_bridge_0: "soc_system" instantiated altera_avalon_mm_bridge "mm_bridge_0"
+Info: nios2_gen2: "soc_system" instantiated altera_nios2_gen2 "nios2_gen2"
+Info: onchip_memory2: Starting RTL generation for module 'soc_system_onchip_memory2'
+Info: onchip_memory2:   Generation command is [exec D:/quartus/quartus/bin64/perl/bin/perl.exe -I D:/quartus/quartus/bin64/perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_system_onchip_memory2 --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0008_onchip_memory2_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0008_onchip_memory2_gen//soc_system_onchip_memory2_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2: Done RTL generation for module 'soc_system_onchip_memory2'
+Info: onchip_memory2: "soc_system" instantiated altera_avalon_onchip_memory2 "onchip_memory2"
+Info: seg7: "soc_system" instantiated TERASIC_SEG7 "seg7"
+Info: spi: Starting RTL generation for module 'soc_system_spi'
+Info: spi:   Generation command is [exec D:/quartus/quartus/bin64/perl/bin/perl.exe -I D:/quartus/quartus/bin64/perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi/generate_rtl.pl --name=soc_system_spi --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0010_spi_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0010_spi_gen//soc_system_spi_component_configuration.pl  --do_build_sim=0  ]
+Info: spi: Done RTL generation for module 'soc_system_spi'
+Info: spi: "soc_system" instantiated altera_avalon_spi "spi"
+Info: sw: Starting RTL generation for module 'soc_system_sw'
+Info: sw:   Generation command is [exec D:/quartus/quartus/bin64/perl/bin/perl.exe -I D:/quartus/quartus/bin64/perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_sw --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0011_sw_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0011_sw_gen//soc_system_sw_component_configuration.pl  --do_build_sim=0  ]
+Info: sw: Done RTL generation for module 'soc_system_sw'
+Info: sw: "soc_system" instantiated altera_avalon_pio "sw"
+Info: sysid_qsys: "soc_system" instantiated altera_avalon_sysid_qsys "sysid_qsys"
+Info: timer: Starting RTL generation for module 'soc_system_timer'
+Info: timer:   Generation command is [exec D:/Quartus/quartus/bin64//perl/bin/perl.exe -I D:/Quartus/quartus/bin64//perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/common -I D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- D:/quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=soc_system_timer --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0013_timer_gen/ --quartus_dir=D:/quartus/quartus --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0013_timer_gen//soc_system_timer_component_configuration.pl  --do_build_sim=0  ]
+Info: timer: Done RTL generation for module 'soc_system_timer'
+Info: timer: "soc_system" instantiated altera_avalon_timer "timer"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "soc_system" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_1: "soc_system" instantiated altera_mm_interconnect "mm_interconnect_1"
+Info: irq_mapper: "soc_system" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_mapper_001: "soc_system" instantiated altera_irq_mapper "irq_mapper_001"
+Info: irq_mapper_002: "soc_system" instantiated altera_irq_mapper "irq_mapper_002"
+Info: rst_controller: "soc_system" instantiated altera_reset_controller "rst_controller"
+Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "hps_0" instantiated altera_hps_io "hps_io"
+Info: cpu: Starting RTL generation for module 'soc_system_nios2_gen2_cpu'
+Info: cpu:   Generation command is [exec D:/Quartus/quartus/bin64//perl/bin/perl.exe -I D:/Quartus/quartus/bin64//perl/lib -I D:/quartus/quartus/sopc_builder/bin/europa -I D:/quartus/quartus/sopc_builder/bin -I D:/quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I D:/quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I D:/quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I D:/quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- D:/quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.pl --name=soc_system_nios2_gen2_cpu --dir=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0019_cpu_gen/ --quartus_bindir=D:/Quartus/quartus/bin64/ --verilog --config=C:/Users/natha/AppData/Local/Temp/alt9086_2421511074302849111.dir/0019_cpu_gen//soc_system_nios2_gen2_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2022.04.04 01:01:27 (*) Starting Nios II generation
+Info: cpu: # 2022.04.04 01:01:27 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2022.04.04 01:01:27 (*)   Creating all objects for CPU
+Info: cpu: # 2022.04.04 01:01:27 (*)     Testbench
+Info: cpu: # 2022.04.04 01:01:27 (*)     Instruction decoding
+Info: cpu: # 2022.04.04 01:01:27 (*)       Instruction fields
+Info: cpu: # 2022.04.04 01:01:27 (*)       Instruction decodes
+Info: cpu: # 2022.04.04 01:01:27 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2022.04.04 01:01:28 (*)       Instruction controls
+Info: cpu: # 2022.04.04 01:01:28 (*)     Pipeline frontend
+Info: cpu: # 2022.04.04 01:01:28 (*)     Pipeline backend
+Info: cpu: # 2022.04.04 01:01:29 (*)   Generating RTL from CPU objects
+Info: cpu: # 2022.04.04 01:01:29 (*)   Creating plain-text RTL
+Info: cpu: # 2022.04.04 01:01:30 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'soc_system_nios2_gen2_cpu'
+Info: cpu: "nios2_gen2" instantiated altera_nios2_gen2_unit "cpu"
+Info: nios2_gen2_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_data_master_translator"
+Info: jtag_uart_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_avalon_jtag_slave_translator"
+Info: TERASIC_ALSA_apb_slave_clkctrl_translator: "mm_interconnect_0" instantiated altera_merlin_apb_translator "TERASIC_ALSA_apb_slave_clkctrl_translator"
+Info: nios2_gen2_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_gen2_data_master_agent"
+Info: jtag_uart_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_avalon_jtag_slave_agent"
+Info: jtag_uart_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_avalon_jtag_slave_agent_rsp_fifo"
+Info: TERASIC_ALSA_apb_slave_clkctrl_agent: "mm_interconnect_0" instantiated altera_merlin_apb_slave_agent "TERASIC_ALSA_apb_slave_clkctrl_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
+Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: router_007: "mm_interconnect_0" instantiated altera_merlin_router "router_007"
+Info: router_009: "mm_interconnect_0" instantiated altera_merlin_router "router_009"
+Info: nios2_gen2_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "nios2_gen2_data_master_limiter"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_004: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_004"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_004: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_004"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: onchip_memory2_s1_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "onchip_memory2_s1_cmd_width_adapter"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: avalon_st_adapter_003: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_003"
+Info: hps_0_h2f_lw_axi_master_agent: "mm_interconnect_1" instantiated altera_merlin_axi_master_ni "hps_0_h2f_lw_axi_master_agent"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
+Info: mm_bridge_0_s0_burst_adapter: "mm_interconnect_1" instantiated altera_merlin_burst_adapter "mm_bridge_0_s0_burst_adapter"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/myfiles/Code/Apophis/FPGA/Quartus/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: Error during execution of "{D:/quartus/quartus/../nios2eds/Nios II Command Shell.bat} make all 2>> stderr.txt": child process exited abnormally
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: Execution of command "{D:/quartus/quartus/../nios2eds/Nios II Command Shell.bat} make all 2>> stderr.txt" failed
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: Command 'wsl' not found.  Please install with:
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: sudo apt install wsl
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: Command 'dos2unix' not found.  Please install with:
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: sudo apt install dos2unix
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: child process exited abnormally
+Error: border: Error during execution of script generate_hps_sdram.tcl: seq: add_fileset_file: No such file C:/Users/natha/AppData/Local/Temp/alt9086_8132986354386663640.dir/0004_seq_gen/hps_AC_ROM.hex
+Error: border: Error during execution of script generate_hps_sdram.tcl: Generation stopped, 3 or more modules remaining
+Error: border: Execution of script generate_hps_sdram.tcl failed
+Error: border: 2022.04.04.01:01:33 Info:
+Error: border: ********************************************************************************************************************
+Error: border: 
+Error: border: Use qsys-generate for a simpler command-line interface for generating IP.
+Error: border: 
+Error: border: Run ip-generate with switch --remove-qsys-generate-warning to prevent this notice from appearing in subsequent runs.
+Error: border: 
+Error: border: ********************************************************************************************************************
+Error: border: 2022.04.04.01:01:36 Warning: Ignored parameter assignment device=5CSXFC6D6F31C6
+Error: border: 2022.04.04.01:01:36 Warning: Ignored parameter assignment extended_family_support=true
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram.seq: This module has no ports or interfaces
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram.p0: p0.scc must be exported, or connected to a matching conduit.
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram.as: as.afi_init_cal_req must be exported, or connected to a matching conduit.
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram.as: as.tracking must be exported, or connected to a matching conduit.
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram.c0: c0.status must be exported, or connected to a matching conduit.
+Error: border: 2022.04.04.01:01:42 Warning: hps_sdram.p0: p0.avl must be connected to an Avalon-MM master
+Error: border: 2022.04.04.01:01:42 Info: hps_sdram: Generating altera_mem_if_hps_emif "hps_sdram" for QUARTUS_SYNTH
+Error: border: 2022.04.04.01:01:44 Info: pll: "hps_sdram" instantiated altera_mem_if_hps_pll "pll"
+Error: border: 2022.04.04.01:01:44 Info: p0: Generating clock pair generator
+Error: border: 2022.04.04.01:01:45 Info: p0: Generating hps_sdram_p0_altdqdqs
+Error: border: 2022.04.04.01:01:52 Info: p0:
+Error: border: 2022.04.04.01:01:52 Info: p0: *****************************
+Error: border: 2022.04.04.01:01:52 Info: p0:
+Error: border: 2022.04.04.01:01:52 Info: p0: Remember to run the hps_sdram_p0_pin_assignments.tcl
+Error: border: 2022.04.04.01:01:52 Info: p0: script after running Synthesis and before Fitting.
+Error: border: 2022.04.04.01:01:52 Info: p0:
+Error: border: 2022.04.04.01:01:52 Info: p0: *****************************
+Error: border: 2022.04.04.01:01:52 Info: p0:
+Error: border: 2022.04.04.01:01:52 Info: p0: "hps_sdram" instantiated altera_mem_if_ddr3_hard_phy_core "p0"
+Error: border: 2022.04.04.01:01:53 Error: seq: Error during execution of "{D:/quartus/quartus/../nios2eds/Nios II Command Shell.bat} make all 2>> stderr.txt": child process exited abnormally
+Error: border: 2022.04.04.01:01:53 Error: seq: Execution of command "{D:/quartus/quartus/../nios2eds/Nios II Command Shell.bat} make all 2>> stderr.txt" failed
+Error: border: 2022.04.04.01:01:53 Error: seq: Command 'wsl' not found.  Please install with:
+Error: border: 2022.04.04.01:01:53 Error: seq: sudo apt install wsl
+Error: border: 2022.04.04.01:01:53 Error: seq: Command 'dos2unix' not found.  Please install with:
+Error: border: 2022.04.04.01:01:53 Error: seq: sudo apt install dos2unix
+Error: border: 2022.04.04.01:01:53 Error: seq: child process exited abnormally
+Error: border: 2022.04.04.01:01:53 Error: seq: add_fileset_file: No such file C:/Users/natha/AppData/Local/Temp/alt9086_8132986354386663640.dir/0004_seq_gen/hps_AC_ROM.hex
+Error: border: while executing
+Error: border: "add_fileset_file $file_name [::alt_mem_if::util::hwtcl_utils::get_file_type $file_name 0] PATH $file_pathname"
+Error: border: ("foreach" body line 4)
+Error: border: invoked from within
+Error: border: "foreach file_pathname $return_files_sw {
+Error: border: 		_dprint 1 "Preparing to add $file_pathname"
+Error: border: 		set file_name [file tail $file_pathname]
+Error: border: 		add_fileset_file $..."
+Error: border: (procedure "generate_sw" line 18)
+Error: border: invoked from within
+Error: border: "generate_sw $name $fileset"
+Error: border: ("if" then script line 4)
+Error: border: invoked from within
+Error: border: "if {[string compare -nocase $fileset QUARTUS_SYNTH] == 0} {
+Error: border: 		set top_level_file "altera_mem_if_hhp_qseq_synth_top.v"
+Error: border: 		add_fileset_file $top_level_fi..."
+Error: border: (procedure "generate_files" line 4)
+Error: border: invoked from within
+Error: border: "generate_files $name QUARTUS_SYNTH"
+Error: border: (procedure "generate_synth" line 3)
+Error: border: invoked from within
+Error: border: "generate_synth altera_mem_if_hhp_qseq_synth_top"
+Error: border: 2022.04.04.01:01:53 Info: seq: "hps_sdram" instantiated altera_mem_if_hhp_ddr3_qseq "seq"
+Error: border: 2022.04.04.01:01:53 Error: Generation stopped, 3 or more modules remaining
+Error: border: 2022.04.04.01:01:53 Info: hps_sdram: Done "hps_sdram" with 7 modules, 33 files
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Error: Generation stopped, 2 or more modules remaining
+Info: soc_system: Done "soc_system" with 64 modules, 135 files
+Error: qsys-generate failed with exit code 1: 74 Errors, 12 Warnings
+Info: Finished: Create HDL design files for synthesis

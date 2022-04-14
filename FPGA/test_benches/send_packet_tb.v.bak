@@ -1,0 +1,27 @@
+`timescale 1ns / 1ns
+module send_packet_tb();
+
+    parameter CLK_PERIOD = 20;  // 10 ns == 100 MHz
+    reg clk;
+    always #(CLK_PERIOD / 2) clk = ~clk;
+	
+	reg [0:50]b1;reg [0:31]b2;reg [0:15]b3;reg [0:15]b4;reg [0:31]b5;reg [0:15]b6;reg [0:15]b7;reg [0:31]b8;reg [0:15]b9;reg [0:15]b10;
+	reg send;
+	wire tx;
+	wire isbusy;
+	
+	send_packet sp(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,send,clk,tx,isbusy);
+	
+    initial begin
+        $monitor("\t%d:bin = %d and data = %d txdata=%d, isbusy=%d",
+            $time, b1,sp.str,isbusy);
+    end
+	
+    initial begin
+	    b1<=234;b2<=234;b3<=234;b4<=234;b5<=234;b6<=234;b7<=234;b8<=234;b9<=234;b10<=234;
+		clk<=1;
+#30		send=1;
+#30     send=0;
+		$stop;
+    end
+endmodule
